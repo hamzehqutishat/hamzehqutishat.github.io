@@ -1,6 +1,5 @@
-## <p class="red">Portfolio Website</p>
+## Hamzeh Qutishat Portfolio Website
 
-## <font color="red">This heading will be red.</font>
 
 ## Description
 
