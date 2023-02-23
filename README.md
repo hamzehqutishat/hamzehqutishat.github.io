@@ -1,4 +1,4 @@
-<span>Portfolio Website</span>
+<span style"color: gray">Portfolio Website</span>
 
 ## Description
 
