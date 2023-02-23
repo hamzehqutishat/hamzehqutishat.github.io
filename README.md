@@ -1,7 +1,4 @@
-# Hamzeh Qutishat portfolio
-
-
-# [Your Name] Portfolio Website
+# [ Hamzeh Qutishat] Portfolio Website
 
 ## Description
 
