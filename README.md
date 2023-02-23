@@ -1,4 +1,4 @@
-# [ Hamzeh Qutishat] Portfolio Website
+<span style"color: gray">Portfolio Website</span>
 
 ## Description
 
