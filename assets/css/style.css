@@ -931,9 +931,12 @@ section .container {
   color: #12d640;
 }
 
-.contact .php-email-form {
+.contact .php-email-form a {
+  text-decoration: none;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.08);
+  background: transparent;
+  border: none;
+  color: #fff;
 }
 
 .contact .php-email-form .validate {
