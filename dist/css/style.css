@@ -1091,3 +1091,70 @@ section .container {
     transform: translateX(-50%);
   }
 }
+
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chatbot-button {
+  background-color: white;
+  border: none;
+  border-radius: 50%; /* Makes it circular */
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chatbot-button:hover {
+  background-color: green;
+}
+
+.chatbox {
+  display: none; /* Initially hidden */
+  width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chatbox-header {
+  background-color: green;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.chat-history {
+  height: 200px;
+  overflow-y: scroll;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#userMessage {
+  width: 80%;
+  padding: 5px;
+}
+
+.user-message {
+  text-align: right;
+  background-color: #e6f7ff;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.chatbot-message {
+  text-align: left;
+  background-color: #f2f2f2;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+

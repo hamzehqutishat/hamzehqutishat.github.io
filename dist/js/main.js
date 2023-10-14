@@ -148,4 +148,47 @@
     $('.venobox').venobox();
   });
 
+function toggleChatbox() {
+    const chatbox = document.getElementById('chatbox');
+    if (chatbox.style.display === 'none' || chatbox.style.display === '') {
+        chatbox.style.display = 'block';
+    } else {
+        chatbox.style.display = 'none';
+    }
+}
+document.getElementById('chatbotButton').addEventListener('click', toggleChatbox);
+
+function sendMessage() {
+  const userMessage = document.getElementById('userMessage').value;
+  console.log('Sending user message to server:', userMessage);
+  const chatHistory = document.getElementById('chatHistory');
+
+  // Display the user's message in the chat history
+  chatHistory.innerHTML += `<div class="user-message">${userMessage}</div>`;
+
+  // Clear the input field
+  document.getElementById('userMessage').value = '';
+
+  // Send the user's message to the server
+
+  fetch('http://localhost:3000/chat', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: userMessage })
+  })
+  .then(response => response.json())
+  .then(data => {
+      // Display the chatbot's response in the chat history
+      chatHistory.innerHTML += `<div class="chatbot-message">${data.message}</div>`;
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+}
+document.getElementById('sendButton').addEventListener('click', sendMessage);
+
+
+
 })(jQuery);
