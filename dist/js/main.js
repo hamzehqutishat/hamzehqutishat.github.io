@@ -98,7 +98,7 @@
     time: 1000
   });
 
-  // Skills section
+  
   $('.skills-content').waypoint(function() {
     $('.progress .progress-bar').each(function() {
       $(this).css("width", $(this).attr("aria-valuenow") + '%');
@@ -170,7 +170,6 @@ function sendMessage() {
   document.getElementById('userMessage').value = '';
 
   // Send the user's message to the server
-
   fetch('http://localhost:3000/chat', {
       method: 'POST',
       headers: {
