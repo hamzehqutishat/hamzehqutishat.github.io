@@ -183,6 +183,24 @@
     }
   });
 
+  $(document).ready(function() {
+    // Initialize Bootstrap carousel
+    $('.carousel').carousel();
+    $('#certificationsCarousel').carousel({
+      interval: 2000, // Set the interval to 2000ms (2 seconds)
+      ride: 'carousel'
+    });
+
+    // Ensure the next and previous buttons work
+    $('.carousel-control-prev').click(function() {
+      $('#certificationsCarousel').carousel('prev');
+    });
+
+    $('.carousel-control-next').click(function() {
+      $('#certificationsCarousel').carousel('next');
+    });
+  });
+
 function toggleChatbox() {
     const chatbox = document.getElementById('chatbox');
     if (chatbox.style.display === 'none' || chatbox.style.display === '') {

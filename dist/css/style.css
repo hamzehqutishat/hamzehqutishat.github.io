@@ -135,22 +135,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu ul {
   display: flex;
+  flex-wrap: wrap; /* Allows the items to wrap if they exceed the available width */
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .nav-menu li + li {
-  margin-left: 30px;
+  margin-left: 20px; /* Adjusted margin to ensure consistent spacing between all tabs */
 }
 
 .nav-menu a {
   display: block;
   position: relative;
   color: #fff;
-  font-size: 19px;
+  font-size: 18px; /* Reduced font size slightly */
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+  padding: 10px 15px; /* Added padding to ensure enough clickable area */
 }
 
 .nav-menu a:before {
@@ -228,8 +230,10 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
-.mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-  color: #1c7d32;
+.header-tops .mobile-nav a:hover, 
+.header-tops .mobile-nav .active > a, 
+.header-tops .mobile-nav li:hover > a {
+  color: #12d640;
   text-decoration: none;
 }
 
@@ -1208,4 +1212,63 @@ section .container {
   border-radius: 5px;
 }
 
-/*chatbot utilities should go here in the future
+/*chatbot utilities should go here in the future*/
+
+.custom-carousel-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #010e1b; /* Updated background color */
+}
+
+.custom-carousel-section .carousel-item img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+  object-position: center; /* Centers the image within the container */
+}
+
+.custom-carousel-section .carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.custom-carousel-section .carousel-control-prev,
+.custom-carousel-section .carousel-control-next {
+  width: 5%;
+  background-color: transparent !important; /* Make the background transparent */
+  border: none; /* Remove any border */
+}
+
+.custom-carousel-section .carousel-control-prev:hover,
+.custom-carousel-section .carousel-control-next:hover {
+  background-color: transparent !important; /* Ensure the background remains transparent on hover */
+}
+
+.custom-carousel-section .carousel-control-prev-icon,
+.custom-carousel-section .carousel-control-next-icon {
+  background-color: transparent !important; /* Ensure the icon background is transparent */
+  color: #12d640 !important; /* Set the default color of the chevron icons to green */
+}
+
+.custom-carousel-section .carousel-control-prev-icon,
+.custom-carousel-section .carousel-control-next-icon {
+  color: #12d640 !important; /* Ensure the color remains green */
+  text-decoration: none; /* Ensure no text decoration */
+}
+
+.custom-carousel-section .carousel-control-prev-icon,
+.custom-carousel-section .carousel-control-next-icon {
+  background-color: transparent !important; /* Ensure the icon background is transparent */
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.custom-carousel-section .carousel-control-prev,
+.custom-carousel-section .carousel-control-next {
+  width: 5%;
+  background-color: #09203a; /* Updated background color */
+}

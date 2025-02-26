@@ -33,6 +33,16 @@ url("./fonts/icofont.woff") format("woff");
   -webkit-font-smoothing: antialiased;
 }
 
+.icofont-rounded-right:before
+{
+  content: "\eaa0";
+}
+
+.icofont-rounded-left:before
+{
+  content: "\ea9d";
+}
+
 .icofont-chart-flow:before
 {
   content: "\e97c";
@@ -41,11 +51,6 @@ url("./fonts/icofont.woff") format("woff");
 .icofont-architecture-alt:before
 {
   content: "\e985";
-}
-
-.icofont-radio-mic:before
-{
-  content: "\ea4e";
 }
 
 .icofont-micro-chip:before
@@ -63,9 +68,9 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ec0a";
 }
 
-.icofont-rounded-right:before
+.icofont-navigation-menu:before
 {
-  content: "\eaa0";
+  content: "\efa2";
 }
 
 [class^="icofont-"].icofont-duotone,
