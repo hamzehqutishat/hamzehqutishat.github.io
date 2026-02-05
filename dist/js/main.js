@@ -201,46 +201,84 @@
     });
   });
 
-function toggleChatbox() {
-    const chatbox = document.getElementById('chatbox');
-    if (chatbox.style.display === 'none' || chatbox.style.display === '') {
-        chatbox.style.display = 'block';
-    } else {
-        chatbox.style.display = 'none';
+// Replace the previous standalone chatbot code with this guarded block
+$(document).ready(function() {
+    try {
+        function toggleChatbox() {
+            const chatbox = document.getElementById('chatbox');
+            if (!chatbox) return;
+            if (chatbox.style.display === 'none' || chatbox.style.display === '') {
+                chatbox.style.display = 'block';
+            } else {
+                chatbox.style.display = 'none';
+            }
+        }
+
+        const chatbotButton = document.getElementById('chatbotButton');
+        if (chatbotButton && chatbotButton.addEventListener) {
+            chatbotButton.addEventListener('click', toggleChatbox);
+        }
+
+        async function sendMessage() {
+            try {
+                const userInput = document.getElementById('userMessage');
+                const chatHistory = document.getElementById('chatHistory');
+
+                if (!userInput || !chatHistory) {
+                    // Chat UI not present — nothing to do
+                    console.warn('Chat elements not found; sendMessage aborted.');
+                    return;
+                }
+
+                const userMessage = (userInput.value || '').trim();
+                if (!userMessage) return;
+
+                // Display the user's message locally
+                chatHistory.innerHTML += `<div class="user-message">${escapeHtml(userMessage)}</div>`;
+                userInput.value = '';
+
+                // Send to server (safe try/catch)
+                try {
+                    const resp = await fetch('http://localhost:3000/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: userMessage })
+                    });
+                    if (!resp.ok) {
+                        console.warn('Chat server responded with', resp.status);
+                        return;
+                    }
+                    const data = await resp.json();
+                    if (data && data.message) {
+                        chatHistory.innerHTML += `<div class="chatbot-message">${escapeHtml(data.message)}</div>`;
+                    }
+                } catch (err) {
+                    console.error('Chat send error:', err);
+                }
+            } catch (err) {
+                console.error('sendMessage error:', err);
+            }
+        }
+
+        const sendButton = document.getElementById('sendButton');
+        if (sendButton && sendButton.addEventListener) {
+            sendButton.addEventListener('click', sendMessage);
+        }
+
+        // Small sanitizer to avoid injecting raw HTML into chat history
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    } catch (err) {
+        // Guard top-level failures so script doesn't crash
+        console.error('Chat initialization error:', err);
     }
-}
-document.getElementById('chatbotButton').addEventListener('click', toggleChatbox);
-
-function sendMessage() {
-  const userMessage = document.getElementById('userMessage').value;
-  console.log('Sending user message to server:', userMessage);
-  const chatHistory = document.getElementById('chatHistory');
-
-  // Display the user's message in the chat history
-  chatHistory.innerHTML += `<div class="user-message">${userMessage}</div>`;
-
-  // Clear the input field
-  document.getElementById('userMessage').value = '';
-
-  // Send the user's message to the server
-  fetch('http://localhost:3000/chat', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: userMessage })
-  })
-  .then(response => response.json())
-  .then(data => {
-      // Display the chatbot's response in the chat history
-      chatHistory.innerHTML += `<div class="chatbot-message">${data.message}</div>`;
-  })
-  .catch(error => {
-      console.error('Error:', error);
-  });
-}
-document.getElementById('sendButton').addEventListener('click', sendMessage);
-
+});
 
 
 })(jQuery);
